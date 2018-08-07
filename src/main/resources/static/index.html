@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -31,10 +31,36 @@
         </div>
     </div>
 
+    <!-- new code -->
+
+    <div th:if="${message}">
+        <h2 th:text="${message}"/>
+    </div>
+
+    <div>
+        <form method="POST" enctype="multipart/form-data" action="/">
+            <table>
+                <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+                <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+            </table>
+        </form>
+    </div>
+
+    <div>
+        <ul>
+            <li th:each="file : ${files}">
+                <a th:href="${file}" th:text="${file}" />
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- end of new code -->
 
     <script type="text/javascript">
         $.get("/user", function(data) {
             $("#user").html(data.userAuthentication.details.name);
+            $("#user").html(data.userAuthentication.details.login);
             $(".unauthenticated").hide()
             $(".authenticated").show()
         });
