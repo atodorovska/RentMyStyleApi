@@ -1,5 +1,7 @@
 package com.sorsix.rentMyStyle.domain;
 
+// comment something for test :P
+
 public class Item {
     private Integer id;
     private String name;
