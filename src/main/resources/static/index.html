@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -7,7 +7,7 @@
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width"/>
     <base href="/"/>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script -->
@@ -30,32 +30,6 @@
             <button onClick="logout()" class="btn btn-primary">Logout</button>
         </div>
     </div>
-
-    <!-- new code -->
-
-    <div th:if="${message}">
-        <h2 th:text="${message}"/>
-    </div>
-
-    <div>
-        <form method="POST" enctype="multipart/form-data" action="/">
-            <table>
-                <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-                <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-            </table>
-        </form>
-    </div>
-
-    <div>
-        <ul>
-            <li th:each="file : ${files}">
-                <a th:href="${file}" th:text="${file}" />
-            </li>
-        </ul>
-    </div>
-
-
-    <!-- end of new code -->
 
     <script type="text/javascript">
         $.get("/user", function(data) {
