@@ -1,13 +1,13 @@
 buildscript {
-	ext {
-		springBootVersion = '2.0.4.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '2.0.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
@@ -20,20 +20,20 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile group: 'org.webjars.npm', name: 'jquery', version: '2.1.1'
-	compile group: 'org.webjars.npm', name: 'bootstrap', version: '3.2.0'
-	compile group: 'org.webjars', name: 'js-cookie', version: '2.1.0'
-	compile group: 'org.webjars', name: 'webjars-locator-core', version: '0.35'
-	compile group: 'org.springframework.security.oauth.boot', name: 'spring-securit	y-oauth2-autoconfigure', version: '2.0.0.RELEASE'
-	// https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf
-	compile group: 'org.thymeleaf', name: 'thymeleaf', version: '2.0.5'
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile group: 'org.webjars.npm', name: 'jquery', version: '2.1.1'
+    compile group: 'org.webjars.npm', name: 'bootstrap', version: '3.2.0'
+    compile group: 'org.webjars', name: 'js-cookie', version: '2.1.0'
+    compile group: 'org.webjars', name: 'webjars-locator-core', version: '0.35'
+    compile group: 'org.springframework.security.oauth.boot', name: 'spring-securit	y-oauth2-autoconfigure', version: '2.0.0.RELEASE'
+    // https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf
+    compile group: 'org.thymeleaf', name: 'thymeleaf', version: '2.0.5'
 
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.0.3.RELEASE'
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.0.3.RELEASE'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
