@@ -1,22 +1,36 @@
 package com.sorsix.rentMyStyle.domain;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.List;
 
+@Entity
+@Table(name = "users")
 public class User {
+
+    @Id
+    @Column(name = "id")
     private String id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "rating")
     private Integer rating;
-    private List<Item> ownRentedItems;
-    private List<Item> givenItems;
+
+    //private List<Item> ownRentedItems;
+    //private List<Item> givenItems;
 
     public User(){
     }
 
-    public User(String id, String name, Integer rating, List<Item> ownRentedItems, List<Item> givenItems) {
+    public User(String id, String name, Integer rating /*List<Item> ownRentedItems, List<Item> givenItems*/) {
         this.id = id;
         this.name = name;
         this.rating = rating;
-        this.ownRentedItems = ownRentedItems;
-        this.givenItems = givenItems;
+        //this.ownRentedItems = ownRentedItems;
+        //this.givenItems = givenItems;
     }
 
     public String getId() {
@@ -43,30 +57,30 @@ public class User {
         this.rating = rating;
     }
 
-    public List<Item> getOwnRentedItems() {
-        return ownRentedItems;
-    }
+//    public List<Item> getOwnRentedItems() {
+//        return ownRentedItems;
+//    }
+//
+//    public void setOwnRentedItems(List<Item> ownRentedItems) {
+//        this.ownRentedItems = ownRentedItems;
+//    }
+//
+//    public List<Item> getGivenItems() {
+//        return givenItems;
+//    }
+//
+//    public void setGivenItems(List<Item> givenItems) {
+//        this.givenItems = givenItems;
+//    }
 
-    public void setOwnRentedItems(List<Item> ownRentedItems) {
-        this.ownRentedItems = ownRentedItems;
-    }
-
-    public List<Item> getGivenItems() {
-        return givenItems;
-    }
-
-    public void setGivenItems(List<Item> givenItems) {
-        this.givenItems = givenItems;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", rating=" + rating +
-                ", ownRentedItems=" + ownRentedItems +
-                ", givenItems=" + givenItems +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "id='" + id + '\'' +
+//                ", name='" + name + '\'' +
+//                ", rating=" + rating +
+//                ", ownRentedItems=" + ownRentedItems +
+//                ", givenItems=" + givenItems +
+//                '}';
+//    }
 }

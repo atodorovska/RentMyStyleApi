@@ -1,25 +1,51 @@
 package com.sorsix.rentMyStyle.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "items")
 public class Item {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "brand")
     private String brand;
+
+    @Column(name = "color")
     private String color;
+
+    @Column(name = "price")
     private Integer price;
+
+    @Column(name = "size")
     private String size;
-    private User owner;
+
+
+    /*
+        *********************************************************************
+        CHANGE IN DB WAS MADE SO THAT THIS CAN WORK, NOW NULL USER IS ALLOWED
+        *********************************************************************
+
+     */
+
+    //private User owner;
 
     public Item(){
     }
 
-    public Item(Integer id, String name, String brand, String color, Integer price, String size, User owner) {
-        this.id = id;
+    public Item(String name, String brand, String color, Integer price, String size/*, User owner*/) {
         this.name = name;
         this.brand = brand;
         this.color = color;
         this.price = price;
         this.size = size;
-        this.owner = owner;
+        //this.owner = owner;
     }
 
     public Integer getId() {
@@ -70,25 +96,25 @@ public class Item {
         this.size = size;
     }
 
-    public User getOwner() {
-        return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
-
-    @Override
-    public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", brand='" + brand + '\'' +
-                ", color='" + color + '\'' +
-                ", price=" + price +
-                ", size='" + size + '\'' +
-                ", owner=" + owner +
-                '}';
-    }
+//    public User getOwner() {
+//        return owner;
+//    }
+//
+//    public void setOwner(User owner) {
+//        this.owner = owner;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "Item{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", brand='" + brand + '\'' +
+//                ", color='" + color + '\'' +
+//                ", price=" + price +
+//                ", size='" + size + '\'' +
+//                ", owner=" + owner +
+//                '}';
+//    }
 }
 

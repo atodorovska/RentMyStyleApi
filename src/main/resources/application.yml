@@ -1,3 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/rent_styles
+    username: postgres
+    password: admin
+  jpa:
+    show-sql: true
 security:
   oauth2:
     client:
@@ -30,3 +37,4 @@ github:
     clientAuthenticationScheme: form
   resource:
     userInfoUri: https://api.github.com/user
+

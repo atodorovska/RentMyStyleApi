@@ -1,12 +1,12 @@
 package com.sorsix.rentMyStyle;
 
+//import com.sorsix.rentMyStyle.configuration.Handler;
+import com.sorsix.rentMyStyle.configuration.Handler;
 import com.sorsix.rentMyStyle.repository.StorageProperties;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import com.sorsix.rentMyStyle.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoTokenServices;
@@ -19,7 +19,6 @@ import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticat
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.filter.CompositeFilter;
@@ -68,12 +67,16 @@ public class RentMyStyleApplication extends WebSecurityConfigurerAdapter {
         return new ResourceServerProperties();
     }
 
+    @Autowired
+    public Handler handler;
+
     private Filter ssoFilter() {
 
         CompositeFilter filter = new CompositeFilter();
         List<Filter> filters = new ArrayList<>();
 
         OAuth2ClientAuthenticationProcessingFilter facebookFilter = new OAuth2ClientAuthenticationProcessingFilter("/login/facebook");
+        facebookFilter.setAuthenticationSuccessHandler(handler);
         OAuth2RestTemplate facebookTemplate = new OAuth2RestTemplate(facebook(), oauth2ClientContext);
         facebookFilter.setRestTemplate(facebookTemplate);
         UserInfoTokenServices tokenServices = new UserInfoTokenServices(facebookResource().getUserInfoUri(), facebook().getClientId());
@@ -82,6 +85,7 @@ public class RentMyStyleApplication extends WebSecurityConfigurerAdapter {
         filters.add(facebookFilter);
 
         OAuth2ClientAuthenticationProcessingFilter githubFilter = new OAuth2ClientAuthenticationProcessingFilter("/login/github");
+        githubFilter.setAuthenticationSuccessHandler(handler);
         OAuth2RestTemplate githubTemplate = new OAuth2RestTemplate(github(), oauth2ClientContext);
         githubFilter.setRestTemplate(githubTemplate);
         tokenServices = new UserInfoTokenServices(githubResource().getUserInfoUri(), github().getClientId());
@@ -110,11 +114,4 @@ public class RentMyStyleApplication extends WebSecurityConfigurerAdapter {
 		SpringApplication.run(RentMyStyleApplication.class, args);
 	}
 
-//    @Bean
-//    CommandLineRunner init(StorageService storageService) {
-//        return (args) -> {
-//            storageService.deleteAll();
-//            storageService.init();
-//        };
-//    }
 }
