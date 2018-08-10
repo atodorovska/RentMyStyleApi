@@ -6,11 +6,6 @@ import java.time.LocalDate;
 @Table(name = "reviews")
 public class Review {
 
-
-    /*
-        ALSO HERE CHANGES IN THE DB MADE SO THIS CAN WORK, BUT NEEDS TO BE DONE WITH THE CORRECT DEPENDENCY IN THE OTHER DB
-     */
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -19,18 +14,19 @@ public class Review {
     @Column(name = "description")
     private String description;
 
-    //private User author;
-    //private User userAbout
-    //private LocalDate date;
+    @Column(name = "fk_users_author")
+    private String author;
+
+    @Column(name = "fk_users_about")
+    private String userAbout;
 
     public Review(){
     }
 
-    public Review(String description /*User author, Item itemAbout, LocalDate date*/) {
+    public Review(String description, String author, String userAbout) {
         this.description = description;
-        //this.author = author;
-        //this.itemAbout = itemAbout;
-        //this.date = date;
+        this.author = author;
+        this.userAbout = userAbout;
     }
 
     public Integer getId() {
@@ -49,38 +45,29 @@ public class Review {
         this.description = description;
     }
 
-//    public User getAuthor() {
-//        return author;
-//    }
-//
-//    public void setAuthor(User author) {
-//        this.author = author;
-//    }
-//
-//    public Item getItemAbout() {
-//        return itemAbout;
-//    }
-//
-//    public void setItemAbout(Item itemAbout) {
-//        this.itemAbout = itemAbout;
-//    }
-//
-//    public LocalDate getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(LocalDate date) {
-//        this.date = date;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "Review{" +
-//                "id=" + id +
-//                ", description='" + description + '\'' +
-//                ", author=" + author +
-//                ", itemAbout=" + itemAbout +
-//                ", date=" + date +
-//                '}';
-//    }
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getUserAbout() {
+        return userAbout;
+    }
+
+    public void setUserAbout(String userAbout) {
+        this.userAbout = userAbout;
+    }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", author='" + author + '\'' +
+                ", userAbout='" + userAbout + '\'' +
+                '}';
+    }
 }

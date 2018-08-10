@@ -1,8 +1,6 @@
 package com.sorsix.rentMyStyle.domain;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,17 +14,24 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    //private List<Item> ownRentedItems;
-    //private List<Item> givenItems;
+    @OneToMany()
+    @JoinColumn(name = "fk_users")
+    private List<Item> items = new ArrayList<>();
+
+
+    /*
+
+        ADDRESS TO ADD ...... 
+
+     */
+
 
     public User(){
     }
 
-    public User(String id, String name /*List<Item> ownRentedItems, List<Item> givenItems*/) {
+    public User(String id, String name) {
         this.id = id;
         this.name = name;
-        //this.ownRentedItems = ownRentedItems;
-        //this.givenItems = givenItems;
     }
 
     public String getId() {
@@ -45,30 +50,20 @@ public class User {
         this.name = name;
     }
 
-//    public List<Item> getOwnRentedItems() {
-//        return ownRentedItems;
-//    }
-//
-//    public void setOwnRentedItems(List<Item> ownRentedItems) {
-//        this.ownRentedItems = ownRentedItems;
-//    }
-//
-//    public List<Item> getGivenItems() {
-//        return givenItems;
-//    }
-//
-//    public void setGivenItems(List<Item> givenItems) {
-//        this.givenItems = givenItems;
-//    }
+    public List<Item> getItems() {
+        return items;
+    }
 
-//    @Override
-//    public String toString() {
-//        return "User{" +
-//                "id='" + id + '\'' +
-//                ", name='" + name + '\'' +
-//                ", rating=" + rating +
-//                ", ownRentedItems=" + ownRentedItems +
-//                ", givenItems=" + givenItems +
-//                '}';
-//    }
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", items=" + items +
+                '}';
+    }
 }

@@ -29,26 +29,20 @@ public class Item {
     @Column(name = "image")
     private String image;
 
-
-    /*
-        *********************************************************************
-        CHANGE IN DB WAS MADE SO THAT THIS CAN WORK, NOW NULL USER IS ALLOWED
-        *********************************************************************
-
-     */
-
-    //private User owner;
+    @Column(name = "fk_users")
+    private String owner;
 
     public Item(){
     }
 
-    public Item(String name, String brand, String color, Integer price, String size, String image) {
+    public Item(String name, String brand, String color, Integer price, String size, String image, String owner) {
         this.name = name;
         this.brand = brand;
         this.color = color;
         this.price = price;
         this.size = size;
         this.image = image;
+        this.owner = owner;
     }
 
     public Integer getId() {
@@ -107,25 +101,26 @@ public class Item {
         this.image = image;
     }
 
-    //    public User getOwner() {
-//        return owner;
-//    }
-//
-//    public void setOwner(User owner) {
-//        this.owner = owner;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "Item{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", brand='" + brand + '\'' +
-//                ", color='" + color + '\'' +
-//                ", price=" + price +
-//                ", size='" + size + '\'' +
-//                ", owner=" + owner +
-//                '}';
-//    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
+                ", color='" + color + '\'' +
+                ", price=" + price +
+                ", size='" + size + '\'' +
+                ", owner=" + owner +
+                '}';
+    }
 }
 
