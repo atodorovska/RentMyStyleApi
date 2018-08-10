@@ -20,7 +20,7 @@ public class Review {
     private String description;
 
     //private User author;
-    //private Item itemAbout;
+    //private User userAbout
     //private LocalDate date;
 
     public Review(){

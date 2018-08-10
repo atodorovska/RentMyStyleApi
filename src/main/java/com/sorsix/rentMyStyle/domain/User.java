@@ -16,19 +16,15 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "rating")
-    private Integer rating;
-
     //private List<Item> ownRentedItems;
     //private List<Item> givenItems;
 
     public User(){
     }
 
-    public User(String id, String name, Integer rating /*List<Item> ownRentedItems, List<Item> givenItems*/) {
+    public User(String id, String name /*List<Item> ownRentedItems, List<Item> givenItems*/) {
         this.id = id;
         this.name = name;
-        this.rating = rating;
         //this.ownRentedItems = ownRentedItems;
         //this.givenItems = givenItems;
     }
@@ -47,14 +43,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getRating() {
-        return rating;
-    }
-
-    public void setRating(Integer rating) {
-        this.rating = rating;
     }
 
 //    public List<Item> getOwnRentedItems() {

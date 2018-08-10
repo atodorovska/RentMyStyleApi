@@ -26,6 +26,9 @@ public class Item {
     @Column(name = "size")
     private String size;
 
+    @Column(name = "image")
+    private String image;
+
 
     /*
         *********************************************************************
@@ -39,13 +42,13 @@ public class Item {
     public Item(){
     }
 
-    public Item(String name, String brand, String color, Integer price, String size/*, User owner*/) {
+    public Item(String name, String brand, String color, Integer price, String size, String image) {
         this.name = name;
         this.brand = brand;
         this.color = color;
         this.price = price;
         this.size = size;
-        //this.owner = owner;
+        this.image = image;
     }
 
     public Integer getId() {
@@ -96,7 +99,15 @@ public class Item {
         this.size = size;
     }
 
-//    public User getOwner() {
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    //    public User getOwner() {
 //        return owner;
 //    }
 //

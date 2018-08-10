@@ -1,6 +1,5 @@
 package com.sorsix.rentMyStyle;
 
-//import com.sorsix.rentMyStyle.configuration.Handler;
 import com.sorsix.rentMyStyle.configuration.Handler;
 import com.sorsix.rentMyStyle.repository.StorageProperties;
 import org.springframework.boot.SpringApplication;
