@@ -16,12 +16,12 @@ public class User {
 
     @OneToMany()
     @JoinColumn(name = "fk_users")
-    private List<Item> items = new ArrayList<>();
+    private List<Item> itemsToGive = new ArrayList<>();
 
 
     /*
 
-        ADDRESS TO ADD ...... 
+        ADDRESS TO ADD ......
 
      */
 
@@ -50,12 +50,12 @@ public class User {
         this.name = name;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public List<Item> getItemsToGive() {
+        return itemsToGive;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setItemsToGive(List<Item> itemsToGive) {
+        this.itemsToGive = itemsToGive;
     }
 
     @Override
@@ -63,7 +63,7 @@ public class User {
         return "User{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", items=" + items +
+                ", itemsToGive=" + itemsToGive +
                 '}';
     }
 }
