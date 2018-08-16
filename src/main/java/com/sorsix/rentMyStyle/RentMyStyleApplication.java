@@ -30,6 +30,7 @@ import java.util.List;
 @EnableOAuth2Client
 @EnableConfigurationProperties(StorageProperties.class)
 @RestController
+@RequestMapping("/api")
 public class RentMyStyleApplication extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -37,6 +38,7 @@ public class RentMyStyleApplication extends WebSecurityConfigurerAdapter {
 
     @RequestMapping("/user")
     public Principal user(Principal principal) {
+        Principal a = principal;
         return principal;
     }
 
@@ -49,7 +51,7 @@ public class RentMyStyleApplication extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .anyRequest()
                 .authenticated().and().logout()
-                .logoutSuccessUrl("/").permitAll().and().csrf().disable()
+                .logoutSuccessUrl("http://localhost:4200/home").permitAll().and().csrf().disable()
 //                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
     }

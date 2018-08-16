@@ -41,7 +41,9 @@ public class Handler implements AuthenticationSuccessHandler {
          */
 
         service.addUser(new User(id, username));
-        response.sendRedirect("http://localhost:4200/login");
+        response.sendRedirect("http://localhost:4200/home");
 
     }
+
+
 }
