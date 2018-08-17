@@ -39,7 +39,7 @@ public class FileUploadController {
     public String handleFileUpload(@RequestParam("file") MultipartFile file) {
 
         storageService.store(file);
-        return "redirect:http://localhost:4200/home";
+        return "redirect:http://localhost:4200/user-profile";
     }
 
 //    @PostMapping("/")
