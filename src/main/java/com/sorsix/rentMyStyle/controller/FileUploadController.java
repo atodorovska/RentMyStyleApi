@@ -36,11 +36,23 @@ public class FileUploadController {
     }
 
     @PostMapping("/file")
-    public ResponseEntity handleFileUpload(@RequestParam("file") MultipartFile file) {
+    public String handleFileUpload(@RequestParam("file") MultipartFile file) {
 
         storageService.store(file);
-        return ResponseEntity.ok().build();
+        return "redirect:http://localhost:4200/home";
     }
+
+//    @PostMapping("/")
+//    public String handleFileUpload(@RequestParam("file") MultipartFile file,
+//                                   RedirectAttributes redirectAttributes) {
+//
+//        storageService.store(file);
+//        redirectAttributes.addFlashAttribute("message",
+//                "You successfully uploaded " + file.getOriginalFilename() + "!");
+//
+//        return "redirect:/";
+//    }
+
 
     @ExceptionHandler(StorageFileNotFoundException.class)
     public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
