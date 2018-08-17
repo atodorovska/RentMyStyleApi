@@ -31,7 +31,7 @@ public class Handler implements AuthenticationSuccessHandler {
         Map<String, Object> map = (Map<String, Object>) a.getUserAuthentication().getDetails();
 
         String username = (map.get("name") != null ? map.get("name").toString() : map.get("login").toString());
-        String id = (map.get("name") != null ? map.get("id").toString() + "f" : map.get("id").toString() + "g");
+        String id = map.get("id").toString();
 
         /*
 

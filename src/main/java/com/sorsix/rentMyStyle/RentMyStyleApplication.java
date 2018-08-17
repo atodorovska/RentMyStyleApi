@@ -38,7 +38,6 @@ public class RentMyStyleApplication extends WebSecurityConfigurerAdapter {
 
     @RequestMapping("/user")
     public Principal user(Principal principal) {
-        Principal a = principal;
         return principal;
     }
 
