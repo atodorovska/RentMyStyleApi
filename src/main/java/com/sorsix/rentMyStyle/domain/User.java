@@ -18,13 +18,9 @@ public class User {
     @JoinColumn(name = "fk_users")
     private List<Item> itemsToGive = new ArrayList<>();
 
-
-    /*
-
-        ADDRESS TO ADD ......
-
-     */
-
+    @OneToMany()
+    @JoinColumn(name = "fk_users_about")
+    private List<Review> reviewsForUser = new ArrayList<>();
 
     public User(){
     }
@@ -58,12 +54,21 @@ public class User {
         this.itemsToGive = itemsToGive;
     }
 
+    public List<Review> getReviewsForUser() {
+        return reviewsForUser;
+    }
+
+    public void setReviewsForUser(List<Review> reviewsForUser) {
+        this.reviewsForUser = reviewsForUser;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", itemsToGive=" + itemsToGive +
+                ", reviewsForUser=" + reviewsForUser +
                 '}';
     }
 }
