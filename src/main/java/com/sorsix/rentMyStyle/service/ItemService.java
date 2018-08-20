@@ -28,4 +28,20 @@ public class ItemService {
     public Optional<List<Item>> getAll() {
         return Optional.of(repository.findAll());
     }
+
+    public Optional<List<Item>> getAllByColor(String color) {
+        return Optional.of(repository.findAllByColor(color));
+    }
+
+    public Optional<List<Item>> getAllByBrand(String brand) {
+        return Optional.of(repository.findAllByBrand(brand));
+    }
+
+    public Optional<List<Item>> getAllBySize(String size) {
+        return Optional.of(repository.findAllBySize(size));
+    }
+
+    public Optional<List<Item>> getAllByPrice(Integer price) {
+        return Optional.of(repository.findAllByPrice(price));
+    }
 }
