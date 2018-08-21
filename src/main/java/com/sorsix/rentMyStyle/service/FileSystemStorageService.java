@@ -41,7 +41,6 @@ public class FileSystemStorageService implements StorageService {
                 throw new StorageException("Failed to store empty file " + filename);
             }
             if (filename.contains("..")) {
-                // This is a security check
                 logger.warn("Cannot store file with relative path outside current directory");
                 throw new StorageException(
                         "Cannot store file with relative path outside current directory "

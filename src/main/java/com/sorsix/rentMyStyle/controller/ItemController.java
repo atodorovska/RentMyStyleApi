@@ -48,6 +48,11 @@ public class ItemController {
         return service.getAllByPrice(price).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/all/search/{name}")
+    public ResponseEntity<List<Item>> getAllByName(@PathVariable String name){
+        return service.getAllByName(name).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     @PostMapping("/post")
     public ResponseEntity<Item> addNewItem(@RequestBody Item item){
         return service.addItem(item).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.CONFLICT).build());

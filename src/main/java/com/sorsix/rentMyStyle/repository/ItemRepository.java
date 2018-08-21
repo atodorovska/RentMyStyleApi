@@ -10,8 +10,9 @@ import java.util.Optional;
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Integer> {
 
-    List<Item> findAllByBrand(String brand);
-    List<Item> findAllByColor(String color);
-    List<Item> findAllBySize(String size);
-    List<Item> findAllByPrice(Integer price);
+    List<Item> findAllByBrandIgnoreCase(String brand);
+    List<Item> findAllByColorIgnoreCase(String color);
+    List<Item> findAllBySizeIgnoreCase(String size);
+    List<Item> findAllByPriceLessThan(Integer price);
+    List<Item> findAllByNameContainingIgnoreCase(String string);
 }
