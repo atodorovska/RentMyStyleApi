@@ -51,7 +51,6 @@ public class RentMyStyleApplication extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated().and().logout()
                 .logoutSuccessUrl("http://localhost:4200/home").permitAll().and().csrf().disable()
-//                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
     }
 
